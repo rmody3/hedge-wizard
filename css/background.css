@@ -1,0 +1,19 @@
+#left-pane{
+  margin: 0;
+  padding-top: 10px;
+  border-right: 1px solid white;
+  border-top: 1px solid white;
+  width: 25%;
+  height: 90%;
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3F4757;
+}
+
+button {
+  border-radius: 5%;
+  width: 25%;
+  height: 50px;
+}
