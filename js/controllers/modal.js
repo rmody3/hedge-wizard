@@ -1,15 +1,17 @@
 class Modal {
-  constructor(){
-    this.attachListeners()
-  }
+
 
   static render() {
     ModalView.renderTemplate()
+    renderPage1()
   }
 
   static close(){
-    console.log("hit")
     $(".modal-backdrop").remove()
     $(".modal-container").remove()
+  }
+
+  static goToPage1(){
+    ModalView.renderPage1()
   }
 }
