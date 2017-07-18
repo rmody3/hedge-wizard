@@ -5,11 +5,6 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/background.css">
     <link rel="stylesheet" href="./css/modal.css">
-    <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
-    <script src="./js/controllers/modal.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./js/views/modalView.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./js/store.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
     <title></title>
   </head>
   <body>
@@ -21,32 +16,16 @@
       </div>
     </div>
   </body>
+  <footer>
+    <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="./js/controllers/modalController.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/controllers/modalPageController.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/models/modal.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/models/modalPage.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/views/modalErrorView.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/views/modalPageView.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/views/modalView.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/store.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
+  </footer>
 </html>
-
-
-<table>
-  <tr>
-    <td>Hedge Goal</td>
-    <td>${store.state["hedge-goal"]}</td>
-  </tr>
-  <tr>
-    <td>Hedge Type</td>
-    <td>${store.state["hedge-type"]}</td>
-  </tr>
-  <tr>
-    <td>Whitelist Universe</td>
-    <td>${store.state["whitelist"].join(", ")}</td>
-  </tr>
-  <tr>
-    <td>Blacklist Universe</td>
-    <td>${store.state["whitelist"].join(", ")}</td>
-  </tr>
-  <tr>
-    <td>Max Position Allocation</td>
-    <td${store.state["max-position-allocation"]} or {${store.state["max-position-allocation"]}} </td>
-  </tr>
-  <tr>
-    <td>Max # of Equities in Hedge</td>
-    <td>${store.state["max-equities"]}</td>
-  </tr>
-</table>
