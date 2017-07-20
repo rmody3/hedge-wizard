@@ -12,7 +12,7 @@ class Modal {
 
   static addInputsToStore(params){
     params.forEach((obj)=>{
-      store.add(obj["name"], obj["value"])
+      store.add("wizardInputs",obj["name"], obj["value"])
     })
   }
 

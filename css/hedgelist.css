@@ -1,0 +1,51 @@
+.nav-bar{
+  padding: 0;
+  display: inline-block;
+  margin-bottom: 4px;
+  text-align: left;
+  width: 100%;
+}
+
+.nav-bar>li{
+  float: left;
+  display: inline-block;
+}
+
+.nav-bar>li>a {
+    background-color: #2E3646;
+    color: white;
+    text-decoration: none;
+    margin-right: 2px;
+    padding: 8px 12px;
+    line-height: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav-bar > li > a:hover, .nav-bar>li>a.active {
+    color: #fff;
+    background-color: #3F4757;
+}
+
+.nav-content-container{
+  position: relative;
+  padding: 12px 12px 20px 12px;
+  border-radius: 4px;
+  border-top-left-radius: 0px;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  background-color: #3F4757;
+}
+
+.hedgelist-remove{
+  display: inline-block;
+  vertical-align: center;
+  width: 100%;
+  height: auto;
+  padding: 4px 6px;
+  margin-bottom: 0px;
+}
+
+.hedgelist-title{
+  float: right;
+}

@@ -32,10 +32,11 @@ class ModalController {
     $("body").on('click', ".modal-button", (event)=>{
       event.preventDefault()
       let inputs = $(".input-container input")
-      let errorElements = Modal.checkErrors(inputs) //dont think these should be class methods
+      let errorElements = Modal.checkErrors(inputs)//dont think these should be class methods
       if (errorElements.length> 0){
-        ModalErrorView.renderErrors(errorElements)
+        ModalErrorView.renderErrors(errorElements, ModalErrorView.ErrorWithValidationTemplate)
       } else {
+        $(".error").empty()
         let params = $(event.currentTarget.form).serializeArray()
         Modal.addInputsToStore(params) //dont think these should be class methods
         this.changePages(event.currentTarget)
@@ -44,15 +45,24 @@ class ModalController {
   }
 
   addCloseListener(){
-    $("body").on('click', ".close", ()=>{
+    $("body").on('click', "#modal-close", ()=>{
       store.state={}
       this.close()
+    })
+  }
+
+  addErrorCloseListener(){
+    $("body").on('click', "#error-close", (event)=>{
+      $(event.currentTarget.parentElement).remove()
     })
   }
 
   attachListeners(){
     this.addChangePageListener()
     this.addCloseListener()
+    this.addErrorCloseListener()
   }
+
+
 
 }

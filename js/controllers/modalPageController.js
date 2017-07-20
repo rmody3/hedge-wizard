@@ -13,6 +13,7 @@ class ModalPageController {
         break;
       case 2:
         ModalPageView.renderPage2()
+        this.attachEditHedgelistListener()
         break;
       case 3:
         ModalPageView.renderPage3()
@@ -29,8 +30,15 @@ class ModalPageController {
   attachMpaListener(){
     $("#mpa").on("change", ()=>{
       let mpaPercent = $("#mpa").val()*.01
-      let mpaCalculatedDollarFormat = ModalPage.calculateAndFormatMpa(mpaPercent, store.state.portfolioValue)
+      let mpaCalculatedDollarFormat = ModalPage.calculateAndFormatMpa(mpaPercent, store.find("wizardInputs","portfolioValue"))
       $("#mpa-calculated").html(mpaCalculatedDollarFormat)
+    })
+  }
+
+  attachEditHedgelistListener(){
+    $(".edit-hedgelist").on("click", ()=>{
+      let list = $(event.currentTarget).data("id")
+      new HedgelistController(list)
     })
   }
 

@@ -36,17 +36,31 @@ class ModalPageView {
       </div>
     `
     $(".modal-content").html(page1)
-    if(store.state["hedge-goal"]){$("#hedge-goal ").val(store.state["hedge-goal"]).change()}
-    if(store.state["hedge-type"]){$("#hedge-type ").val(store.state["hedge-type"]).change()}
+    if(store.state.wizardInputs["hedge-goal"]){$("#hedge-goal ").val(store.state.wizardInputs["hedge-goal"]).change()}
+    if(store.state.wizardInputs["hedge-type"]){$("#hedge-type ").val(store.state.wizardInputs["hedge-type"]).change()}
   }
 
   static renderPage2(){
     let page2 = `
+        <div class="hedgelist-container">
+          <div class="whitelist-container">
+            <div class="hedgelist-header">
+              <button type="button" data-id="Whitelist" class="edit-hedgelist"><img src="public/images/wrench.png"></button>
+              <span>Whitelist</span>
+            </div>
+            <ul id="whitelist">
+            </ul>
+          </div>
+          <div class="blacklist-container">
+            <div class="hedgelist-header">
+              <button type="button" data-id="Blacklist" class="edit-hedgelist"><img src="public/images/wrench.png"></button>
+              <span>Blacklist</span>
+            </div>
+            <ul id="blacklist">
+            </ul>
+          </div>
+        </div>
       <form data-id="2">
-        <div class="input-container">
-        </div>
-        <div class="input-container">
-        </div>
         <input class="modal-button prev" type="submit" value="Previous" data-id="prev">
         <input class="modal-button next" type="submit" value="Next" data-id="next">
       </form>
@@ -58,10 +72,10 @@ class ModalPageView {
   }
 
   static renderPage3(){
-    let mpaPercent = store.state["max-position-allocation"] || 20.0
-    let mpaCalculated = store.state.portfolioValue*mpaPercent*.01
+    let mpaPercent = store.state.wizardInputs["max-position-allocation"] || 20.0
+    let mpaCalculated = store.state.wizardInputs.portfolioValue*mpaPercent*.01
     let mpaCalculatedDollarFormat = "$" + mpaCalculated.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-    let maxEquities = store.state["max-equities"] || 5
+    let maxEquities = store.state.wizardInputs["max-equities"] || 5
     let page3 = `
       <form data-id="3">
         <div class="input-container">
@@ -86,26 +100,26 @@ class ModalPageView {
   }
 
   static renderPage4(){
-    let mpaCalculated = store.state.portfolioValue*store.state["max-position-allocation"]*.01
+    let mpaCalculated = store.state.wizardInputs.portfolioValue*store.state.wizardInputs["max-position-allocation"]*.01
     let mpaCalculatedDollarFormat = "$" + mpaCalculated.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     let page4 = `
       <div id="summary-title">Summary</div>
       <table class="summary">
         <tr>
           <td class="spec">Hedge Goal:</td>
-          <td class="value">${store.state["hedge-goal"]}</td>
+          <td class="value">${store.state.wizardInputs["hedge-goal"]}</td>
         </tr>
         <tr>
           <td class="spec">Hedge Type:</td>
-          <td class="value">${store.state["hedge-type"]}</td>
+          <td class="value">${store.state.wizardInputs["hedge-type"]}</td>
         </tr>
         <tr>
           <td class="spec">Max Position Allocation:</td>
-          <td class="value">${store.state["max-position-allocation"]}% or ${mpaCalculatedDollarFormat} </td>
+          <td class="value">${store.state.wizardInputs["max-position-allocation"]}% or ${mpaCalculatedDollarFormat} </td>
         </tr>
         <tr>
           <td class="spec">Max # of Equities in Hedge:</td>
-          <td class="value">${store.state["max-equities"]}</td>
+          <td class="value">${store.state.wizardInputs["max-equities"]}</td>
         </tr>
       </table>
       <form data-id="4">
