@@ -1,12 +1,20 @@
+.hedgelist-container{
+  padding: 0 10px 10px 10px;
+  overflow: auto;
+  width: 60%;
+  margin: 0 auto;
+}
+
 .nav-bar{
   padding: 0;
   display: inline-block;
-  margin-bottom: 4px;
+  margin: 0 0 -4px 0;
   text-align: left;
   width: 100%;
 }
 
 .nav-bar>li{
+  padding: 8px 0px;
   float: left;
   display: inline-block;
 }
@@ -37,15 +45,93 @@
   background-color: #3F4757;
 }
 
+.hedgelist-content-container{
+  margin-top: 0px;
+  border-radius: 4px;
+  padding: 12px 12px 0px 12px;
+}
+
 .hedgelist-remove{
   display: inline-block;
-  vertical-align: center;
   width: 100%;
   height: auto;
   padding: 4px 6px;
-  margin-bottom: 0px;
+  margin: 5px 0px;
+  border-radius: 5px;
 }
 
 .hedgelist-title{
-  float: right;
+  padding: 5px;
+  text-align: right;
+  display: block;
+}
+
+/*for Symbol List*/
+.symbol-list{
+  display: inline-block;
+  box-sizing: border-box;
+  background: white;
+  padding: 0;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+
+.symbol-list-element, .symbol-list-input{
+  margin: 3px;
+  padding: 1px 3px;
+  background-color: #F5F5F5;
+  border: 1px solid #BBB;
+  float: left;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 5px;
+  list-style-type: none;
+  color: black;
+}
+
+
+input.symbol{
+  border: 0;
+  width: 100px;
+  padding: 3px 8px;
+  background-color: white;
+  margin: 0 auto;
+}
+
+input.symbol:focus {
+   border-color: rgba(82, 168, 236, 0.8);
+   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+   transition: all linear .2s;
+}
+
+.remove-symbol {
+  color: #a6b3cf;
+  margin-left: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.add-symbols, .add, .remove{
+  font-size: 14px
+}
+.nav-content-container>.hedgelist-inputs, .hedgelist-content-container {
+  text-align: right;
+}
+
+.hedgelist-inputs>select {
+  border-radius: 5px;
+  margin: 5px 0px;
+  height: 30px;
+  width: 100%;
+}
+
+.showHedgelistEquities{
+  color: black;
+}
+
+
+hr{
+  margin: 0;
 }

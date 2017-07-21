@@ -1,3 +1,4 @@
+const store = new Store()
 
 $(()=>{
   $("#start-wizard").on('click', ()=>{
@@ -13,6 +14,10 @@ $(()=>{
     Object.keys(availableLists).forEach((key)=>{
       store.add("availableLists",key, availableLists[key])
     })
-    new ModalController()
+
+    var modalPageController = new ModalPageController()
+    var modalController = new ModalController(modalPageController)
+
+
   })
 })

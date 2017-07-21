@@ -18,14 +18,12 @@ class Store{
     this.state[resource][key].push(object)
   }
 
-  removeFromArray(resource, key, index){
+  removeFromArray(resource, key, value){
     this.state[resource] = this.state[resource] || {}
     this.state[resource][key] = this.state[resource][key] || []
-    debugger
+    let index = this.state[resource][key].indexOf(value)
     this.state[resource][key].splice(index,1)
 
   }
 
 }
-
-let store = new Store()

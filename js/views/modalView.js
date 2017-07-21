@@ -25,8 +25,9 @@ class ModalView {
         <div class="modal-footer"></div>
       </div>
       `
-    $("body").append(template)
+    $(".main").append(template)
   }
+
 
 }
 //

@@ -29,7 +29,7 @@ class ModalPageView {
             <option value="Long & Short">Long & Short</option>
           </select>
         </div>
-        <input class="modal-button next" type="submit" value="Begin" data-id="next">
+        <input class="modal-button next" type="button" value="Begin" data-id="next">
       </form>
       <div class="modal-description">
         Please specify a goal for the hedge and the types of positions held.
@@ -61,8 +61,8 @@ class ModalPageView {
           </div>
         </div>
       <form data-id="2">
-        <input class="modal-button prev" type="submit" value="Previous" data-id="prev">
-        <input class="modal-button next" type="submit" value="Next" data-id="next">
+        <input class="modal-button prev" type="button" value="Previous" data-id="prev">
+        <input class="modal-button next" type="button" value="Next" data-id="next">
       </form>
       <div class="modal-description">
         Please specify the equities the hedger may use to construct the hedger basket.
@@ -89,8 +89,8 @@ class ModalPageView {
           <label for="max-equities">Max Number of Equities in Hedge:</label>
           <input id="max-equities" type="number" min="1" name="max-equities" required="required" title="Max Number of Equities in Hedge" value="${maxEquities}">
         </div>
-        <input class="modal-button prev" type="submit" value="Previous" data-id="prev">
-        <input class="modal-button next" type="submit" value="Next" data-id="next">
+        <input class="modal-button prev" type="button" value="Previous" data-id="prev">
+        <input class="modal-button next" type="button" value="Next" data-id="next">
       </form>
       <div class="modal-description">
         Please specify a maximum per-position allocation as a percentage of the total portfolio value. Minimum per-position allocation is 1%.
@@ -101,8 +101,31 @@ class ModalPageView {
 
   static renderPage4(){
     let mpaCalculated = store.state.wizardInputs.portfolioValue*store.state.wizardInputs["max-position-allocation"]*.01
-    let mpaCalculatedDollarFormat = "$" + mpaCalculated.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
-    let page4 = `
+    let mpaCalculatedDollarFormat = "$" + mpaCalculated.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+    let blacklistEquities = store.state.wizardInputs["blacklist"]
+    let whitelistEquities = store.state.wizardInputs["whitelist"]
+    let blacklistString = "none"
+    let whitelistString = "none"
+    if (blacklistEquities){
+      let blacklistEl= []
+      Object.keys(blacklistEquities).forEach((key)=>{
+        blacklistEquities[key].forEach((equity,i)=>{
+          blacklistEl.push(equity)
+        })
+      })
+      blacklistString=blacklistEl.join(", ")
+    }
+    if (whitelistEquities) {
+      let whitelistEl= []
+      Object.keys(whitelistEquities).forEach((key)=>{
+        whitelistEquities[key].forEach((equity,i)=>{
+          whitelistEl.push(equity)
+        })
+      })
+      whitelistString=whitelistEl.join(", ")
+    }
+
+    let page4 =`
       <div id="summary-title">Summary</div>
       <table class="summary">
         <tr>
@@ -114,6 +137,16 @@ class ModalPageView {
           <td class="value">${store.state.wizardInputs["hedge-type"]}</td>
         </tr>
         <tr>
+        <tr>
+          <td class="spec">Whitelist Equities:</td>
+          <td class="value">${whitelistString}</td>
+        </tr>
+        <tr>
+        <tr>
+          <td class="spec">Blacklist Equities:</td>
+          <td class="value">${blacklistString}</td>
+        </tr>
+        <tr>
           <td class="spec">Max Position Allocation:</td>
           <td class="value">${store.state.wizardInputs["max-position-allocation"]}% or ${mpaCalculatedDollarFormat} </td>
         </tr>
@@ -123,14 +156,40 @@ class ModalPageView {
         </tr>
       </table>
       <form data-id="4">
-        <input class="modal-button prev" type="submit" value="Previous" data-id="prev">
-        <input class="modal-button next" type="submit" value="Hedge" data-id="finish">
+        <input class="modal-button prev" type="button" value="Previous" data-id="prev">
+        <input class="modal-button next" type="button" value="Hedge" data-id="finish">
       </form>
       <div class="modal-description">
         The system will attempt to hedge your portfolio. Please review your specifications before finalizing.
       </div>
     `
     $(".modal-content").html(page4)
+  }
+
+  static renderHedgelists(){
+    $("#blacklist").empty()
+    $("#whitelist").empty()
+    let blacklistEquities = store.state.wizardInputs["blacklist"]
+    let whitelistEquities = store.state.wizardInputs["whitelist"]
+    if (blacklistEquities){
+      let blacklistEl= []
+      Object.keys(blacklistEquities).forEach((key)=>{
+        blacklistEquities[key].forEach((equity,i)=>{
+          blacklistEl.push(`<li class="showHedgelistEquities">${equity}</li>`)
+        })
+      })
+      $("#blacklist").append(blacklistEl)
+    }
+    if (whitelistEquities) {
+      let whitelistEl= []
+      Object.keys(whitelistEquities).forEach((key)=>{
+        whitelistEquities[key].forEach((equity,i)=>{
+          whitelistEl.push(`<li class="showHedgelistEquities">${equity}</li>`)
+        })
+      })
+      $("#whitelist").append(whitelistEl)
+    }
+
   }
 
 }

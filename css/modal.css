@@ -50,7 +50,7 @@
   margin: 0 auto;
 }
 
-.close {
+button.close {
   display: inline-block;
   background: transparent;
   color: #8F9194;
@@ -65,10 +65,11 @@
 }
 
 .close:hover {
+  background: transparent;
   color: white;
 }
 
-.input-container, .hedgelist-container{
+.input-container {
   padding: 10px;
   overflow: auto;
   width: 60%;
@@ -92,9 +93,9 @@
   font-size: 14px;
 }
 
-.input-container>select {
+.input-container>select{
   height: 30px;
-  width: 40%;
+  width: 45%;
 }
 
 .input-container>input{
@@ -107,33 +108,21 @@
   padding: 4px;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    margin: 0;
+.edit-hedgelist{
+  cursor: pointer;
+  height: 26px;
+  width: 46px;
 }
 
-.modal-button{
+.edit-hedgelist>img {
+  filter: invert(1);
+  max-width:100%;
+  max-height:100%;
+}
+.modal-button, .save, .cancel{
   margin:10px 0;
   width: 120px;
-}
-
-.edit-hedgelist, .modal-button {
-  padding: 2px 12px;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
-  border-radius: 5px;
-  color: white;
-  background: linear-gradient(to bottom, #2A3142, #171B25);
   font-size: 18px;
-  font-weight: bold;
-}
-
-.edit-hedgelist:hover,.modal-button:hover{
-  background: #D67B1F
 }
 
 .modal-description{
@@ -187,6 +176,8 @@ td {
   padding: 2px;
   font-size: 14px;
   font-weight: 200;
+  max-width: 300px;
+  overflow: auto;
 }
 
 
@@ -228,7 +219,7 @@ td {
 
 
 .whitelist-container, .blacklist-container{
-  display: inline-block;
+  display: inline-grid;
   margin: 10px;
   width: 42%;
 }
@@ -242,20 +233,6 @@ td {
   background: white;
 }
 
-
-.edit-hedgelist{
-  cursor: pointer;
-  height: 26px;
-  width: 46px;
-}
-
-
-.edit-hedgelist>img {
-  filter: invert(1);
-  max-width:100%;
-  max-height:100%;
-}
-
-.hedgelist-header{
+.hedgelist-header {
   text-align: left;
 }

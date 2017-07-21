@@ -1,12 +1,13 @@
 class ModalController {
-  constructor(){
+  constructor(modalPageController){
+    this.modalPageController = modalPageController
     this.render()
     this.attachListeners()
   }
 
   render() {
     ModalView.renderTemplate()
-    new ModalPageController(1)
+    this.modalPageController.render(1)
   }
 
   close(){
@@ -18,11 +19,12 @@ class ModalController {
     let direction = $(target).data("id")
     let currPage = $(target.form).data("id")
     if( direction == "next"){
-      new ModalPageController(currPage+1)
+      this.modalPageController.render(currPage+1)
     } else if (direction == "prev" && currPage > 1) {
-      new ModalPageController(currPage-1)
+      this.modalPageController.render(currPage-1)
     } else if (direction == "finish") {
       //ajax call to server to send parameters to run hedge
+      console.log(store.state.wizardInputs)
       store.state={}
       this.close()
     }
