@@ -7,7 +7,8 @@ class ModalController {
 
   render() {
     ModalView.renderTemplate()
-    this.modalPageController.render(1)
+    //starts with page 1
+    this.modalPageController.renderPage(1)
   }
 
   close(){
@@ -19,9 +20,9 @@ class ModalController {
     let direction = $(target).data("id")
     let currPage = $(target.form).data("id")
     if( direction == "next"){
-      this.modalPageController.render(currPage+1)
+      this.modalPageController.renderPage(currPage+1)
     } else if (direction == "prev" && currPage > 1) {
-      this.modalPageController.render(currPage-1)
+      this.modalPageController.renderPage(currPage-1)
     } else if (direction == "finish") {
       //ajax call to server to send parameters to run hedge
       console.log(store.state.wizardInputs)
@@ -30,17 +31,23 @@ class ModalController {
     }
   }
 
+  attachListeners(){
+    this.addChangePageListener()
+    this.addCloseListener()
+    this.addErrorCloseListener()
+  }
+
   addChangePageListener(){
-    $("body").on('click', ".modal-button", (event)=>{
+    $("body").off('click').on('click', ".modal-button", (event)=>{
       event.preventDefault()
       let inputs = $(".input-container input")
-      let errorElements = Modal.checkErrors(inputs)//dont think these should be class methods
+      let errorElements = Modal.checkErrors(inputs)
       if (errorElements.length> 0){
         ModalErrorView.renderErrors(errorElements, ModalErrorView.ErrorWithValidationTemplate)
       } else {
         $(".error").empty()
         let params = $(event.currentTarget.form).serializeArray()
-        Modal.addInputsToStore(params) //dont think these should be class methods
+        Modal.addInputsToStore(params)
         this.changePages(event.currentTarget)
       }
     })
@@ -58,13 +65,4 @@ class ModalController {
       $(event.currentTarget.parentElement).remove()
     })
   }
-
-  attachListeners(){
-    this.addChangePageListener()
-    this.addCloseListener()
-    this.addErrorCloseListener()
-  }
-
-
-
 }

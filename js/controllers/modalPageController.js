@@ -4,7 +4,7 @@ class ModalPageController {
     this.whitelistController = new HedgelistController("Whitelist", this)
   }
 
-  render(page){
+  renderPage(page){
     ModalPageView.updateQuestionContainer(page)
     switch (page) {
       case 1:
@@ -42,6 +42,4 @@ class ModalPageController {
       else if (list === "Whitelist"){this.whitelistController.render()}
     })
   }
-
-
 }

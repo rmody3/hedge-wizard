@@ -1,7 +1,4 @@
 class Modal {
-  constructor() {
-
-  }
 
   static checkErrors(inputs){
     let errorElements = inputs.filter((i,el)=>{
@@ -15,5 +12,4 @@ class Modal {
       store.add("wizardInputs",obj["name"], obj["value"])
     })
   }
-
 }

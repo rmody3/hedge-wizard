@@ -1,0 +1,177 @@
+/*Input Container across all Pages*/
+.input-container {
+  padding: 10px;
+  overflow: auto;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.input-container>label{
+  height: 20px;
+  padding: 5px;
+  float: left;
+  color: #EEE;
+  font-weight: 200;
+  font-size: 14px;
+
+}
+
+.input-container>select, .input-container>input, .input-container>span{
+  float: right;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.input-container>select{
+  height: 30px;
+  width: 45%;
+}
+
+.input-container>input{
+  text-align: right;
+  height: 20px;
+  padding: 4px;
+}
+.input-container>span{
+  height: 20px;
+  padding: 4px;
+}
+
+/*Other Modal Content*/
+.modal-description{
+  color: #EEE;
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 14px;
+  font-style: italic;
+  letter-spacing: .75px
+}
+
+.modal-button, .save, .cancel{
+  margin:10px 0;
+  width: 120px;
+  font-size: 18px;
+}
+
+/*Question Bar*/
+.question-bar{
+  display: inline-block;
+  width: 100px;
+  height: 6px;
+  border: 1px solid white;
+}
+
+.question-container, #question-page{
+  margin: 0;
+}
+
+.question-container {
+  margin-bottom: 10px;
+}
+
+/*Error messages*/
+.error-message{
+  border: 1px solid #E48627;
+  background-color: #FFDEC0;
+  color: #E48627;
+  font-size: 12px;
+  border-radius: 4px;
+  height: 20px;
+  line-height: 20px;
+  margin: 20px auto;
+  padding: 8px 0px 8px 10px;
+  text-align: left;
+}
+
+#error-close{
+  padding: 0px;
+  position: relative;
+  top: -2px;
+  width: auto;
+  margin-right: 10px;
+}
+
+/*Page 2 Hedglist Equity editing*/
+.whitelist-container, .blacklist-container{
+  display: inline-grid;
+  margin: 10px;
+  width: 42%;
+}
+
+#whitelist, #blacklist {
+  padding: 0;
+  margin: 10px 0 0 0;
+  list-style-type: none;
+  height: 160px;
+  width: auto;
+  background: white;
+}
+
+.showHedgelistEquities{
+  color: black;
+}
+
+.hedgelist-header {
+  text-align: left;
+}
+
+.edit-hedgelist{
+  cursor: pointer;
+  height: 26px;
+  width: 46px;
+}
+
+.edit-hedgelist>img {
+  filter: invert(1);
+  max-width:100%;
+  max-height:100%;
+}
+
+/*Page 3 content*/
+#mpa{
+  border-radius: 5px 0 0 5px;
+}
+
+#mpa-addon, #mpa-calculated{
+  margin-left: -3px;
+  background: #EEE;
+  color: black;
+  border-radius: 0px;
+}
+
+#mpa-calculated{
+  line-height: 20px;
+  background: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#max-equities{
+  width: 10%;
+}
+
+/*Page 4 summary content*/
+.summary{
+  margin: 0 auto;
+}
+
+.spec {
+  text-align: left;
+}
+
+.value {
+  text-align: right;
+}
+
+#summary-title {
+  margin-bottom: 15px;
+}
+
+td {
+  height: 16px;
+  padding: 2px;
+  font-size: 14px;
+  font-weight: 200;
+  max-width: 300px;
+  overflow: auto;
+}

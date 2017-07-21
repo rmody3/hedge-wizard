@@ -5,6 +5,15 @@
   margin: 0 auto;
 }
 
+.nav-content-container>.hedgelist-inputs, .hedgelist-content-container {
+  text-align: right;
+}
+
+hr{
+  margin: 0;
+}
+
+/*Nav Bar*/
 .nav-bar{
   padding: 0;
   display: inline-block;
@@ -45,6 +54,7 @@
   background-color: #3F4757;
 }
 
+/*Hegelist Content Container*/
 .hedgelist-content-container{
   margin-top: 0px;
   border-radius: 4px;
@@ -66,7 +76,7 @@
   display: block;
 }
 
-/*for Symbol List*/
+/*Symbol Nav Contents*/
 .symbol-list{
   display: inline-block;
   box-sizing: border-box;
@@ -90,7 +100,6 @@
   list-style-type: none;
   color: black;
 }
-
 
 input.symbol{
   border: 0;
@@ -116,22 +125,11 @@ input.symbol:focus {
 .add-symbols, .add, .remove{
   font-size: 14px
 }
-.nav-content-container>.hedgelist-inputs, .hedgelist-content-container {
-  text-align: right;
-}
 
+/*Nav Bar inputs other than Symbol*/
 .hedgelist-inputs>select {
   border-radius: 5px;
   margin: 5px 0px;
   height: 30px;
   width: 100%;
-}
-
-.showHedgelistEquities{
-  color: black;
-}
-
-
-hr{
-  margin: 0;
 }

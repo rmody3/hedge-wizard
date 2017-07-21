@@ -20,10 +20,10 @@ class ModalErrorView {
     return (el)=>{ return (`<div class="error-message"><button type="button" id="error-close" class="close">x</button><strong>Error:</strong> ${el.value} ${errorMessage}.</div>`)}
   }
 
+  //error message used fr symbols
   static renderErrorWithoutElement(value,errorMessage){
     let error =  `<div class="error-message"><button type="button" id="error-close" class="close">x</button><strong>Error:</strong> ${value} ${errorMessage}.</div>`
     $(".error").empty()
     $(".error").html(error)
   }
-
 }

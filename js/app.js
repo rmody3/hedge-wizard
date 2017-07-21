@@ -2,7 +2,7 @@ const store = new Store()
 
 $(()=>{
   $("#start-wizard").on('click', ()=>{
-    //this would be some sort of ajax call or call of a client side portfolio bject already stored that can be accessed
+    //this would be some sort of ajax call or call of a client side portfolio object already stored that can be accessed
     let portfolio = {value: 1000000}
     let availableLists = {
       "symbols": ["GLD","AAPL", "IBM", "MSFT", "XOM", "A", "BBB", "CCC", "DDD.XBX"],
@@ -14,10 +14,8 @@ $(()=>{
     Object.keys(availableLists).forEach((key)=>{
       store.add("availableLists",key, availableLists[key])
     })
-
+    //instantiate controllers
     var modalPageController = new ModalPageController()
     var modalController = new ModalController(modalPageController)
-
-
   })
 })

@@ -6,8 +6,9 @@ class HedgelistView {
   }
 
   static renderFooter(){
-    let footer = `<button type="button" name="save" class="save">Save</button>
-    <button type="button" name="cancel" class="cancel">Cancel</button>`
+    let footer = `
+      <button type="button" name="cancel" class="cancel">Cancel</button>
+      <button type="button" name="save" class="save">Save</button>`
 
     $(".modal-footer").html(footer)
   }
@@ -15,25 +16,26 @@ class HedgelistView {
   static renderBody(list){
     $(".modal-body").empty()
     let template= `
-    <div class="error"></div>
-    <ul class="nav-bar">
-      <li><a class="active" data-id="symbols" data-title="Symbols" href="#">Symbols</a></li>
-      <li><a data-id="portfolios" data-title="Portfolio" href="#">Portfolios</a></li>
-      <li><a data-id="user-lists" data-title="User List" href="#">User Lists</a></li>
-      <li><a data-id="system-lists" data-title="System List" href="#">System Lists</a></li>
-    </ul>
-    <div class="nav-content-container">
-      <form class="hedgelist-inputs">
-      </form>
-    </div>
-    <hr>
-    <div class="hedgelist-content-container">
-      <div class="hedgelist-title" id="hedgelist-content-title">${list} Contents:
+      <div class="error"></div>
+      <ul class="nav-bar">
+        <li><a class="active" data-id="symbols" data-title="Symbols" href="#">Symbols</a></li>
+        <li><a data-id="portfolios" data-title="Portfolio" href="#">Portfolios</a></li>
+        <li><a data-id="user-lists" data-title="User List" href="#">User Lists</a></li>
+        <li><a data-id="system-lists" data-title="System List" href="#">System Lists</a></li>
+      </ul>
+      <div class="nav-content-container">
+        <form class="hedgelist-inputs">
+        </form>
       </div>
-      <select class="hedgelist-remove" multiple="multiple">
-      </select>
-      <button type="button" class="remove">Remove</button>
-    </div>`
+      <hr>
+      <div class="hedgelist-content-container">
+        <div class="hedgelist-title" id="hedgelist-content-title">${list} Contents:
+        </div>
+        <select class="hedgelist-remove" multiple="multiple">
+        </select>
+        <button type="button" class="remove">Remove</button>
+      </div>`
+
     $(".modal-body").html(template)
   }
 
@@ -44,10 +46,11 @@ class HedgelistView {
         options.push(`<option data-key="${key}" value=${el}>${el}</option>`)
       })
     })
+
     $(".hedgelist-remove").html(options)
   }
 
-  static renderSymbolList(symbolList){
+  static renderSymbolBar(symbolList){
     let options = symbolList.map((el)=>{
       return `<option value="${el}">${el}</option>`
     })
@@ -66,10 +69,9 @@ class HedgelistView {
 
     $("form.hedgelist-inputs").empty()
     $("form.hedgelist-inputs").html(selector)
-
   }
 
-  static renderSymbol(value){
+  static renderTempSymbol(value){
     let symbolEl = `
       <li data-value="${value}" class="symbol-list-element">
         ${value}
@@ -79,7 +81,7 @@ class HedgelistView {
     $(".symbol-list").prepend(symbolEl)
   }
 
-  //render other hedgelist selectors
+  //render other hedgelist selectors besides symbol
   static renderSelectLists(selectorId, selectorTitle, hedgelist){
     let options = hedgelist.map((el)=>{
       return `<option value="${el}">${el}</option>`

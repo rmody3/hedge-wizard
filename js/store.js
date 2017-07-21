@@ -7,6 +7,7 @@ class Store{
     this.state[resource] = this.state[resource] || {}
     this.state[resource][key] = object
   }
+
   find(resource, key){
     this.state[resource] = this.state[resource] || {}
     return this.state[resource][key]
@@ -22,8 +23,6 @@ class Store{
     this.state[resource] = this.state[resource] || {}
     this.state[resource][key] = this.state[resource][key] || []
     let index = this.state[resource][key].indexOf(value)
-    this.state[resource][key].splice(index,1)
-
+    if (index != -1){this.state[resource][key].splice(index,1)}
   }
-
 }

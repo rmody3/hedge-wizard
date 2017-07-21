@@ -33,8 +33,8 @@ class ModalPageView {
       </form>
       <div class="modal-description">
         Please specify a goal for the hedge and the types of positions held.
-      </div>
-    `
+      </div>`
+
     $(".modal-content").html(page1)
     if(store.state.wizardInputs["hedge-goal"]){$("#hedge-goal ").val(store.state.wizardInputs["hedge-goal"]).change()}
     if(store.state.wizardInputs["hedge-type"]){$("#hedge-type ").val(store.state.wizardInputs["hedge-type"]).change()}
@@ -66,8 +66,8 @@ class ModalPageView {
       </form>
       <div class="modal-description">
         Please specify the equities the hedger may use to construct the hedger basket.
-      </div>
-    `
+      </div>`
+
     $(".modal-content").html(page2)
   }
 
@@ -76,6 +76,7 @@ class ModalPageView {
     let mpaCalculated = store.state.wizardInputs.portfolioValue*mpaPercent*.01
     let mpaCalculatedDollarFormat = "$" + mpaCalculated.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
     let maxEquities = store.state.wizardInputs["max-equities"] || 5
+
     let page3 = `
       <form data-id="3">
         <div class="input-container">
@@ -94,8 +95,8 @@ class ModalPageView {
       </form>
       <div class="modal-description">
         Please specify a maximum per-position allocation as a percentage of the total portfolio value. Minimum per-position allocation is 1%.
-      </div>
-    `
+      </div>`
+
     $(".modal-content").html(page3)
   }
 
@@ -106,6 +107,8 @@ class ModalPageView {
     let whitelistEquities = store.state.wizardInputs["whitelist"]
     let blacklistString = "none"
     let whitelistString = "none"
+
+    //iterate through blacklist and whitelist
     if (blacklistEquities){
       let blacklistEl= []
       Object.keys(blacklistEquities).forEach((key)=>{
@@ -161,14 +164,15 @@ class ModalPageView {
       </form>
       <div class="modal-description">
         The system will attempt to hedge your portfolio. Please review your specifications before finalizing.
-      </div>
-    `
+      </div>`
+      
     $(".modal-content").html(page4)
   }
 
   static renderHedgelists(){
     $("#blacklist").empty()
     $("#whitelist").empty()
+    //iterate through blacklist and whitelist to create list items
     let blacklistEquities = store.state.wizardInputs["blacklist"]
     let whitelistEquities = store.state.wizardInputs["whitelist"]
     if (blacklistEquities){
@@ -189,7 +193,5 @@ class ModalPageView {
       })
       $("#whitelist").append(whitelistEl)
     }
-
   }
-
 }

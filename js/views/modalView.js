@@ -23,19 +23,7 @@ class ModalView {
           <div class=modal-content></div>
         </div>
         <div class="modal-footer"></div>
-      </div>
-      `
+      </div>`
     $(".main").append(template)
   }
-
-
 }
-//
-// <tr>
-//   <td>Whitelist Universe</td>
-//   <td>${store.state["whitelist"].join(", ")}</td>
-// </tr>
-// <tr>
-//   <td>Blacklist Universe</td>
-//   <td>${store.state["whitelist"].join(", ")}</td>
-// </tr>
